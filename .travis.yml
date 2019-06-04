@@ -13,6 +13,7 @@ before_install:
 - docker-compose --version
 install:
 - docker-compose build nginx
+- docker-compose up -d
 before_script:
 - pip install requests
 - pip install docker
