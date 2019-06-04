@@ -1,9 +1,9 @@
-FROM nginx:1.17.0
+FROM nginx:stable
 
 LABEL maintainer="info@optimum-web.com"
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install --no-install-recommends -y supervisor procps net-tools apache2-utils \
+RUN apt-get update && apt-get install --no-install-recommends -y supervisor procps net-tools cron apache2-utils \
  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY supervisord/nginx.conf /etc/supervisord.conf

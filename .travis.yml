@@ -1,0 +1,29 @@
+language: python
+python:
+- 2.7
+env:
+  global:
+  - DOCKER_CONTENT_TRUST=0
+services:
+- docker
+before_install:
+- sudo apt-get update
+- docker-compose --version
+- pip install docker-compose --upgrade
+- docker-compose --version
+install:
+- docker build .
+before_script:
+- pip install requests
+- pip install docker
+script:
+- bash ./.travis/linters.sh
+- python tests.py
+notifications:
+  slack:
+    rooms:
+    - optimum-team:GycletOWK4Kt95GktwYwfUMp#build
+after_success:
+- echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+- docker-compose images
+- docker push trydirect/nginx:latest
