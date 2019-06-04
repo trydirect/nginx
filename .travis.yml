@@ -12,7 +12,7 @@ before_install:
 - pip install docker-compose --upgrade
 - docker-compose --version
 install:
-- docker build .
+- docker-compose build nginx
 before_script:
 - pip install requests
 - pip install docker
