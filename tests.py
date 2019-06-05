@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time
 import docker
+import time
 
 client = docker.from_env()
+time.sleep(10)
 
 # NGINX
 nginx = client.containers.get('nginx')
+if 'running' not in nginx.status:
+    print(nginx.logs())
+
 assert nginx.status == 'running'
 
 # test restart
