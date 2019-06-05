@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
     nginx:
-      image: nginx:latest
+      image: trydirect/nginx:latest
       build: .
       container_name: nginx
       restart: always
