@@ -11,4 +11,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY auto-letsencrypt /opt/auto-letsencrypt
 RUN chmod +x /opt/auto-letsencrypt
 
-CMD ["supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
