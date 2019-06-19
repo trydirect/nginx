@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y supervisor proc
 
 COPY supervisord/nginx.conf /etc/supervisord.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY auto-letsencrypt /opt/auto-letsencrypt
-RUN chmod +x /opt/auto-letsencrypt
+COPY auto-letsencrypt /opt/letsencrypt/letsencrypt-auto
+RUN chmod +x /opt/letsencrypt/letsencrypt-auto
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
