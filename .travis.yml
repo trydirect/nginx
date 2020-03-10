@@ -27,5 +27,4 @@ notifications:
     - optimum-team:GycletOWK4Kt95GktwYwfUMp#build
 after_success:
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-- docker-compose images
 - docker push trydirect/nginx:latest
