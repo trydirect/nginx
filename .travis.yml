@@ -24,7 +24,7 @@ script:
 notifications:
   slack:
     rooms:
-    - optimum-team:GycletOWK4Kt95GktwYwfUMp#build
+    - optimum-team:"$SLACK"#build
 after_success:
 - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 - docker push trydirect/nginx:latest
